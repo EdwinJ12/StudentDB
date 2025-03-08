@@ -13,36 +13,39 @@ public class StudentController {
     private final StudentService studentServices;
 
     public StudentController(StudentService studentServices){
-        this.studentServices=studentServices;
+        this.studentServices = studentServices;
     }
 
     @GetMapping("/list")
     public List<Student> getAllStudents(){
         return studentServices.getAllStudents();
     }
+
     @GetMapping("/student/{id}")
-    public ResponseEntity<Student>getStudentById(@PathVariable String id){
-        return studentServices.getStudentById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<Student> getStudentById(@PathVariable String id){
+        return studentServices.getStudentById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
+
     @PostMapping("/addStudent")
     public Student addStudent(@RequestBody Student student){
         return studentServices.addStudent(student);
     }
-    @DeleteMapping("deleteStudentById/{id}")
+
+    @DeleteMapping("/deleteStudentById/{id}")
     public ResponseEntity<Void> deleteStudentById(@PathVariable String id){
         studentServices.deleteStudent(id);
         return ResponseEntity.noContent().build();
     }
+
     @DeleteMapping("/wipe")
     public void wipe(){
         studentServices.wipe();
     }
-    //@RestController
-    public class TestController {
-        @GetMapping("/test")
-        public String test() {
-            return "Hello, World!";
-        }
-    }
 
+    @GetMapping("/test")
+    public String test() {
+        return "Hello, World!";
+    }
 }
