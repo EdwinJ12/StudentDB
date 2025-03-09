@@ -10,9 +10,11 @@ public class Student {        //student class
     private String name;
     private int age;
     private String course;
+    private int markA;
 
     public Student() {}
-    public Student(String name, String course, int age) {
+    public Student(String name,String id, String course, int age) {
+        this.id=id;
         this.name=name;
         this.course=course;
         this.age=age;
