@@ -77,7 +77,7 @@ public class StudentController {
     }
     @PostMapping("/addRandomStudent")
     public ResponseEntity<String> addRandomStudent(){
-        String response = studentServices.addRandomStudent();
+        String response = studentServices.addStudent(studentServices.generateRandomStudent());
         if (response.startsWith("Student added")){
             return ResponseEntity.ok().body("Random Student added");
         }

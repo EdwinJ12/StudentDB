@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Management</title>
+</head>
+<body>
+<h2>Student Management</h2>
+
+<!-- Form to Add Student -->
+<form th:action="@{/students/addStudent}" method="post">
+    <input type="text" name="id" placeholder="unique_ID" required>
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="text" name="age" placeholder="Age" required>
+    <input type="text" name="course" placeholder="Course" required>
+    <button type="submit">Add Student</button>
+</form>
+
+<!-- Search Student -->
+<form th:action="@{/students/search}" method="get">
+    <input type="text" name="query" placeholder="Search by ID, Name, Age, Course">
+    <button type="submit">Search</button>
+</form>
+
+<!-- Display Students -->
+<h3>Student List</h3>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Course</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.age}"></td>
+        <td th:text="${student.course}"></td>
+        <td>
+            <form th:action="@{/students/delete/{id}(id=${student.id})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

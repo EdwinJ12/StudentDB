@@ -67,7 +67,6 @@ public class StudentService {
         studentRepository.save(randomStudent);
         return "Student added";
     }
-
     public String generateRandomId(int length) {
         if (length <= 0) {
             throw new IllegalArgumentException("ID length must be greater than 0");
@@ -116,6 +115,15 @@ public class StudentService {
         String course = courses.get(random.nextInt(courses.size()));
 
         return course;
+    }
+    public Student generateRandomStudent(){
+        Random random = new Random();
+        String id = generateRandomId(8);
+        int randomAge = 18 + random.nextInt(10);
+        String randomName = generateRandomName();
+        String randomCourse = generateRandomCourse();
+        Student randomStudent =new Student(randomName,id, randomCourse,randomAge);
+        return randomStudent;
     }
 
 }
