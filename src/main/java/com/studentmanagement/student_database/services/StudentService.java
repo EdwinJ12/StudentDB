@@ -22,6 +22,9 @@ public class StudentService {
         return studentRepository.findAll();
     }
     public String addStudent(Student student){
+        if(student.getId()==null||student.getId().isEmpty()){
+            student.setId(generateRandomId(8));
+        }
         Optional<Student>existingStudent = studentRepository.findById(student.getId());
         if(existingStudent.isPresent()){
             return "Id already exists. Please use update ID or delete and configure a new one.";

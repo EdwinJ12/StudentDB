@@ -47,6 +47,9 @@ public class UIController {
     @PostMapping("/students/add")
     public String addStudent(@ModelAttribute Student student, RedirectAttributes redirectAttributes) {
         String response = studentService.addStudent(student);
+        if(student.getId().isEmpty()||student.getId()==null){
+            student.setId(studentService.generateRandomId(8));
+        }
         if (response.startsWith("Id already exists")) {
             redirectAttributes.addFlashAttribute("error", response);
         } else {
@@ -143,3 +146,6 @@ public class UIController {
         }
     }
 }
+
+
+// hello this is a test
