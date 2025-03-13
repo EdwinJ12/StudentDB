@@ -60,5 +60,5 @@ This project is open-source. Feel free to use and modify it.
 Happy coding! 🚀
 
 ---
-### Generated with ChatGPT  
+### Disclaimer 
 This README file was created with the assistance of ChatGPT to document the Student Database project.
