@@ -39,8 +39,9 @@ This is a **Spring Boot + MongoDB** application for managing student records wit
 | `POST`  | `/students/addStudent`             | Add a student |
 | `GET`   | `/students/list`                   | Get all students |
 | `GET`   | `/students/student/{id}`           | Get student by ID |
+| `PATCH`   | `/students/student/update/{id}`  | Update student by ID |
 | `DELETE`| `/students/deleteStudentById/{id}` | Delete student by ID |
-| `DELETEAll`| `/students/wipe`                   | Delete all students |
+| `DELETE`| `/students/wipe`                   | Delete all students |
 | `GET`   | `/students/search?name=John`       | Search by name |
 | `GET`   | `/students/search?age=20`          | Search by age |
 | `GET`   | `/students/search?course=human resource`       | Search by course |
