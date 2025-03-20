@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
-    public UserDetailsService(UserRepository userRepository){
+    public CustomUserDetailsService(UserRepository userRepository){
         this.userRepository=userRepository;
     }
     @Override
@@ -23,7 +23,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                 user.getPassword(),
                 user.getRoles().stream().map(SimpleGrantedAuthority::new).toList()
         );
-
     }
 
 }
